@@ -1,28 +1,28 @@
 import React, { createContext } from 'react';
-
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import {getAuth} from "firebase/auth";
+import {getFirestore} from 'firebase/firestore';
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCWrlTqwKQYaxj23iwDhPJbR85D1qY_cDk",
-  authDomain: "c8-cyo-firebase-2.firebaseapp.com",
-  projectId: "c8-cyo-firebase-2",
-  storageBucket: "c8-cyo-firebase-2.appspot.com",
-  messagingSenderId: "454536000399",
-  appId: "1:454536000399:web:95b200216d2779153f51fa"
+  apiKey: "AIzaSyDs4ds5-yK2YsZ5iooqp_fspWabUMGPTm8",
+  authDomain: "inceptionutest.firebaseapp.com",
+  projectId: "inceptionutest",
+  storageBucket: "inceptionutest.appspot.com",
+  messagingSenderId: "173413718219",
+  appId: "1:173413718219:web:69a08e864569b11a9e234e",
+  measurementId: "G-4WHBDG4V3S"
 };
 
-// Initialize Firebase
+
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 export const FirebaseContext = createContext();
 
 function FirebaseProvider(props) {
   const children = props.children;
-  const theValues = { app };
+  const theValues = { app, auth, db };
   return (
     <FirebaseContext.Provider value={theValues}>
       {children}
